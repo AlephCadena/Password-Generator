@@ -1,28 +1,61 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var generatePassword = document.querySelector("#generate");
-const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const numbers = "0123456789";
-const symbols = "!@#$%^&*_-+="
-var length = prompt ("How many characters would you like?")
-var upper = prompt ("How many uppercase letters would you like?")
-var special = prompt ("How many special characters would you like?")
-
-
 
 // Write password to the #password input
-function generateBtn( ) {
+function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
 
-function generatePassword(length, characters) {
-  let password = "";
-  for (let i = 0; i < length; i++) {
-  password += characters.charAt(
-  Math.floor(Math.random() * characters.length)
-}
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// My added code
+
+var special = ['!','@','#','$','%','^','&','*','_','-','?','(',')','+','.','/',':',';','<','>','=','[',']','^','~'];
+var lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var nums = ['1','2','3','4','5','6','7','8','9','0'];
+
+
+function generatePassword() {
+  var possiblePassword = [];
+  var length = window.prompt('Length of password: ');
+
+  while (length < 8 || length > 128 || !Number.isInteger(Number(length))) {
+    length = prompt("Password length must be an integer between 8 and 128 characters. Please try again: ");
+  };
+
+  var checkspecial = window.confirm('Do you want to include special characters? ');
+  var checklower = window.confirm('Do you want to include lowercase letters? ');
+  var checkupper = window.confirm('Do you want to include uppercase letters? ');
+  var checknums = window.confirm('Do you want to include numbers? ');
+
+  if (checkspecial) {
+    possiblePassword = possiblePassword.concat(special);
+  };
+
+  if (checklower) {
+    possiblePassword = possiblePassword.concat(lower);
+  };
+
+  if (checkupper) {
+    possiblePassword = possiblePassword.concat(upper);
+  };
+
+  if (checknums) {
+    possiblePassword = possiblePassword.concat(nums);
+  };
+  
+  if (possiblePassword.length == 0) {
+    window.alert('Password must include some characters....');
+    return 'No Criteria selected. Try again';
+  } else {
+    var result = '';
+    for ( var i = 0; i < length; i++ ) {
+      result = result + possiblePassword[Math.floor(Math.random() * possiblePassword.length)];
+    }
+    return result;
+  };
+};
