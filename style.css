@@ -4,9 +4,19 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-.wrapper {
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.head {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -14,10 +24,10 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: white;
 }
 
-.wrapper {
+.head {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
@@ -30,7 +40,7 @@ header {
   color: hsl(206, 17%, 28%);
 }
 
-.card {
+.page {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
   border-width: 1px;
@@ -42,7 +52,7 @@ header {
   padding: 30px 40px;
 }
 
-.card-header::after {
+.page-header::after {
   content: " ";
   display: block;
   width: 100%;
@@ -50,15 +60,15 @@ header {
   height: 2px;
 }
 
-.card-body {
+.page-body {
   min-height: 100px;
 }
 
-.card-footer {
+.page-footer {
   text-align: center;
 }
 
-.card-footer::before {
+.page-footer::before {
   content: " ";
   display: block;
   width: 100%;
@@ -66,7 +76,7 @@ header {
   height: 2px;
 }
 
-.card-footer::after {
+.page-footer::after {
   content: " ";
   display: block;
   clear: both;
@@ -76,8 +86,6 @@ header {
   border: none;
   background-color: hsl(360, 91%, 36%);
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
   font-size: 22px;
@@ -88,20 +96,11 @@ header {
   cursor: pointer;
 }
 
-button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
-}
-
 .float-right {
   float: right;
 }
 
 #password {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
   display: block;
   width: 100%;
   padding-top: 15px;
